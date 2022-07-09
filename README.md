@@ -6,7 +6,7 @@
 
 ### Introduction
 
-For this project, you will train an agent to navigate (and collect yellow bananas!) in a large, square world.  
+For this project, you will train an agent to navigate (and collect yellow bananas!) in a large, square world.  This project will make use of a Deep Q-Network (DQN).
 
 ![Trained Agent][image1]
 
