@@ -6,7 +6,7 @@
 
 ### Introduction
 
-For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.  
+For this project, you will train an agent to navigate (and collect yellow bananas!) in a large, square world.  
 
 ![Trained Agent][image1]
 
@@ -36,4 +36,4 @@ The task is episodic, and in order to solve the environment, your agent must get
 
 ### Instructions
 
-Follow the instructions in `Navigation.ipynb` to get started with training your own agent!
+Set up your python environment properly - directions can be found at: https://github.com/udacity/Value-based-methods#dependencies. Once you have properly configured your environment, run the Navigation.ipynb file. 
