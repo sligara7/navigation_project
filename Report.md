@@ -7,18 +7,17 @@
 ## Goal
 In this project, I build a reinforcement learning (RL) agent that navigates an environment that is similar to [Unity's Banana Collector environment](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#banana-collector).
 
-A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. The goal of our agent is to collect as many yellow bananas as possible while avoiding blue bananas. In order to solve the environment, our agent must achieve an average score of +13 over 100 consecutive episodes.
+A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. The goal of the agent is to collect as many yellow bananas as possible while avoiding blue bananas. In order to solve the environment, our agent must achieve an average score of +13 over 100 consecutive episodes.
 
 ##### &nbsp;
 
 ## Approach
-Here are the high-level steps taken in building an agent that solves this environment.
+Below are a list of the general steps taken to train an agent:
 
-1. Evaluate the state and action space.
-1. Establish baseline using a random action policy.
-1. Implement learning algorithm.
-1. Run experiments to measure agent performance.
-1. Select best performing agent and capture video of it navigating the environment.
+1. Load the environment and some necessary python modules.
+2. Examine the environment, states, and actions.
+3. Take some random actions within the environment.
+4. Finally, set up the Deep Q-Network to train the agent.
 
 ##### &nbsp;
 
