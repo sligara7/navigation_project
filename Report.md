@@ -14,10 +14,9 @@ A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is
 ## Approach
 Below are a list of the general steps taken to train an agent:
 
-1. Load the environment and some necessary python modules.
-2. Examine the environment, states, and actions.
-3. Take some random actions within the environment.
-4. Finally, set up the Deep Q-Network to train the agent.
+1. Examine the environment, states, and actions.
+2. Take some random actions within the environment.
+3. Finally, set up the Deep Q-Network to train the agent.
 
 ##### &nbsp;
 
@@ -32,8 +31,8 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 
 ##### &nbsp;
 
-### 2. Establish Baseline
-Before building an agent that learns, I started by testing an agent that selects actions (uniformly) at random at each time step.
+### 2. Run environment
+Before building an agent that learns, test an agent that selects actions (uniformly) at random at each time step.
 
 ```python
 env_info = env.reset(train_mode=False)[brain_name] # reset the environment
@@ -52,18 +51,20 @@ while True:
 
 print("Score: {}".format(score))
 ```
-
-Running this agent a few times resulted in scores from -2 to 2. Obviously, if the agent needs to achieve an average score of 13 over 100 consecutive episodes, then choosing actions at random won't work.
+Running this code shows that learning is required and that it cannot be solved using a series of random (uniform) actions at each step in an episode.  
 
 
 ##### &nbsp;
 
 ### 3. Implement Learning Algorithm
-Agents use a policy to decide which actions to take within an environment. The primary objective of the learning algorithm is to find an optimal policy&mdash;i.e., a policy that maximizes the reward for the agent. Since the effects of possible actions aren't known in advance, the optimal policy must be discovered by interacting with the environment and recording observations. Therefore, the agent "learns" the policy through a process of trial-and-error that iteratively maps various environment states to the actions that yield the highest reward. This type of algorithm is called **Q-Learning**.
+The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy.  The policy that maximizes reward is called the optimal policy.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.
+
+There are various techniques to 
 
 As for constructing the Q-Learning algorithm, the general approach is to implement a handful of different components, then run a series of tests to determine which combination of components and which hyperparameters yield the best results.
 
 In the following sections, we'll describe each component of the algorithm in detail.
+
 
 
 #### Q-Function
