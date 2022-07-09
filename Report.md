@@ -57,11 +57,9 @@ Running this code shows that learning is required and that it cannot be solved u
 ##### &nbsp;
 
 ### 3. Implement Learning Algorithm
-The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy.  The policy that maximizes reward is called the optimal policy.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.
+The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward, `R`.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy.  The policy that maximizes reward is called the optimal policy.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.
 
-There are various techniques to 
-
-As for constructing the Q-Learning algorithm, the general approach is to implement a handful of different components, then run a series of tests to determine which combination of components and which hyperparameters yield the best results.
+There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step  within an episode, instead of waiting to learn until an episode is completed.  
 
 In the following sections, we'll describe each component of the algorithm in detail.
 
