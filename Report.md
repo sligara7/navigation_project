@@ -69,24 +69,13 @@ Reinforcement Learning is affected by the **exploration vs. exploitation dilemma
 With Deep Q-Learning, a deep neural network,`NN`, is used to approximate the Q-function. DQN utilizes a NN to approximate a function,`F`.  The optimal policy is the function where `F(s,a,w) ≈ Q(s,a)`. The weights, `w`, become the parameter that the NN minimizes error.  A DQN is designed to produce a Q-value for every possible action in a single forward pass.   
 
 #### Experience Replay
-The first techIn a simple DQN, the interaction is learned from and then discarded, which is wasteful.  The idea of experience replay is to store a sampling of `(s,a, r, s')` in a buffer to relearn from them.  This also helps prevent an issue that occurs when a sequence of states and actions become highly correlated, which can cause a level of oscillation or divergence in a DQN.  
+The first techIn a simple DQN, the interaction is learned from and then discarded, which is wasteful.  The idea of experience replay is to store a sampling of `(s,a, r, s')` in a buffer to relearn from them.  This also helps prevent an issue that occurs when a sequence of states and actions become highly correlated, which can cause a level of oscillation or divergence in a DQN.  The experience replay is setup in the class called `ReplayBuffer` within the Navigation.ipynb code.
 
-
-##### &nbsp;
-
-### 4. Run Experiments
-Now that the various components of our algorithm are in place, it's time to measure the agent's performance within the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
-
-The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
-
-<img src="assets/experiment_summary.png" width="80%" align="top-left" alt="" title="Experiment Summary" />
 
 ##### &nbsp;
 
 ## Future Improvements
-- **Test the replay buffer** &mdash; Implement a way to enable/disable the replay buffer. As mentioned before, all agents utilized the replay buffer. Therefore, the test results don't measure the impact the replay buffer has on performance.
-- **Add *prioritized* experience replay** &mdash; Rather than selecting experience tuples randomly, prioritized replay selects experiences based on a priority value that is correlated with the magnitude of error. This can improve learning by increasing the probability that rare and important experience vectors are sampled.
-- **Replace conventional exploration heuristics with Noisy DQN** &mdash; This approach is explained [here](https://arxiv.org/abs/1706.10295) in this research paper. The key takeaway is that parametric noise is added to the weights to induce stochasticity to the agent's policy, yielding more efficient exploration.
+There are many techniques in addition to experience replay designed to deal with a other issues that arize in training a DQN.  These include utilizing a Double DQN, Prioritized Experience Replay, Duelling DQN, multistep bootstrap targets, distributional DQN, and noisy DQN.  Additionally, all these techniques can be combined together - one example of this is the rainbow DQN, which can be found at https://github.com/Kaixhin/Rainbow.  If a cost to benefit ratio can be considered where the amount of work put into making these improvements, the benefit may be marginal.  A simple DQN utilizing experience replay seems to be sufficient for this task.  
 
 ##### &nbsp;
 ##### &nbsp;
