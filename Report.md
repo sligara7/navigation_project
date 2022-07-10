@@ -57,11 +57,11 @@ Running this code shows that learning is required and that it cannot be solved u
 ##### &nbsp;
 
 ### 3. Implement Learning Algorithm
-The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward, `R`.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy.  The policy that maximizes reward is called the optimal policy.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.
+The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward, `R`.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy, `π`.  The policy that maximizes reward is called the optimal policy, `π*`.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.  The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`.
 
-There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step  within an episode, instead of waiting to learn until an episode is completed.  
+There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step within an episode, instead of waiting to learn until an episode is completed.  
 
-In the following sections, we'll describe each component of the algorithm in detail.
+Next, we willdescribe each component of the algorithm in more detail.
 
 
 
@@ -105,18 +105,6 @@ Each experience is stored in a replay buffer as the agent interacts with the env
 Also, experience replay improves learning through repetition. By doing multiple passes over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
 
 The implementation of the replay buffer can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L133) in the `agent.py` file of the source code.
-
-
-#### Double Deep Q-Network (DDQN)
-One issue with Deep Q-Networks is they can overestimate Q-values (see [Thrun & Schwartz, 1993](https://www.ri.cmu.edu/pub_files/pub1/thrun_sebastian_1993_1/thrun_sebastian_1993_1.pdf)). The accuracy of the Q-values depends on which actions have been tried and which states have been explored. If the agent hasn't gathered enough experiences, the Q-function will end up selecting the maximum value from a noisy set of reward estimates. Early in the learning process, this can cause the algorithm to propagate incidentally high rewards that were obtained by chance (exploding Q-values). This could also result in fluctuating Q-values later in the process.
-
-<img src="assets/overestimating-Q-values.png" width="50%" align="top-left" alt="" title="Overestimating Q-values" />
-
-We can address this issue using Double Q-Learning, where one set of parameters `w` is used to select the best action, and another set of parameters `w'` is used to evaluate that action.  
-
-<img src="assets/DDQN-slide.png" width="40%" align="top-left" alt="" title="DDQN" />
-
-The DDQN implementation can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L96) in the `agent.py` file of the source code.
 
 
 #### Dueling Agents
