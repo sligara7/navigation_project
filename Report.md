@@ -59,24 +59,9 @@ Running this code shows that learning is required and that it cannot be solved u
 ### 3. Implement Learning Algorithm
 The goal of the agent is to maximize reward in a given episode.  In general, an environment contains a set of states.  The agent will take an action, `A`, at each state, `S`  and earn a reward, `R`.  Often the states and actions are paired together in a state, action pair within a tuple. The goal of the agent over a series of finite episodes is to learn which actions maximize cummulative reward over an episode.  The knowledge of which action to take in each state, is a policy, `π`.  The policy that maximizes the total expected reward is called the optimal policy, `π*`.  As the optimal policy is not known in advance, the agent must interact and learn this through a series of trial and error. This type of algorithm is called **Q-Learning**.  The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`.
 
-There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step within an episode, instead of waiting to learn until an episode is completed.  
+There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step within an episode, instead of waiting to learn until an episode is completed.  As the this is a stochastic environment and it cannot be known the exact return, a discount factor is applied to the expected return of each future step - the discount factor is denoted by the hyperparameter gamma `γ`.
 
-Next, we willdescribe each component of the algorithm in more detail.
-
-
-
-#### Q-Function
-To discover an optimal policy, I setup a Q-function. The Q-function calculates the expected reward `R` for all possible actions `A` in all possible states `S`.
-
-<img src="assets/Q-function.png" width="19%" align="top-left" alt="" title="Q-function" />
-
-We can then define our optimal policy `π*` as the action that maximizes the Q-function for a given state across all possible states. The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`, then following the optimal policy for each subsequent state.
-
-<img src="assets/optimal-policy-equation.png" width="47%" align="top-left" alt="" title="Optimal Policy Equation" />
-
-In order to discount returns at future time steps, the Q-function can be expanded to include the hyperparameter gamma `γ`.
-
-<img src="assets/optimal-action-value-function.png" width="67%" align="top-left" alt="" title="Optimal Action Value Function" />
+Next, we will describe each component of the algorithm in more detail.
 
 
 #### Epsilon Greedy Algorithm
