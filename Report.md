@@ -102,21 +102,6 @@ The table below shows the complete set of experiments. These experiments compare
 
 <img src="assets/experiment_summary.png" width="80%" align="top-left" alt="" title="Experiment Summary" />
 
-
-##### &nbsp;
-
-### 5. Select best performing agent
-The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
-
-<img src="assets/best-agent-graph.png" width="50%" align="top-left" alt="" title="Best Agent Graph" />
-
-The complete set of results and steps can be found in [this notebook](Navigation_final.ipynb).
-
-Also, [here](https://youtu.be/NZd1PoeBoro) is a video showing the agent's progress as it goes from randomly selecting actions to learning a policy that maximizes rewards.
-
-<a href="https://youtu.be/NZd1PoeBoro"><img src="assets/video-thumbnail.png" width="40%" align="top-left" alt="" title="Banana Agent Video" /></a>
-
-
 ##### &nbsp;
 
 ## Future Improvements
