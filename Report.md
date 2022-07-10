@@ -66,11 +66,9 @@ Reinforcement Learning is affected by the **exploration vs. exploitation dilemma
 
 
 #### Deep Q-Network (DQN)
-With Deep Q-Learning, a deep neural network is used to approximate the Q-function. Given a network `F`, finding an optimal policy is a matter of finding the best weights `w` such that `F(s,a,w) ≈ Q(s,a)`.
+With Deep Q-Learning, a deep neural network,`NN`, is used to approximate the Q-function. DQN utilizes a NN to approximate a function,`F`.  The optimal policy is the function where `F(s,a,w) ≈ Q(s,a)`. The weights, `w`, become the parameter that the NN minimizes error.  A DQN is designed to produce a Q-value for every possible action in a single forward pass.   
 
-The neural network architecture used for this project can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/model.py#L5) in the `model.py` file of the source code. The network contains three fully connected layers with 64, 64, and 4 nodes respectively. Testing of bigger networks (more nodes) and deeper networks (more layers) did not produce better results.
-
-As for the network inputs, rather than feeding-in sequential batches of experience tuples, I randomly sample from a history of experiences using an approach called Experience Replay.
+There is sometimes a very high correlation between actions and states; this may lead to an unstable and inneffective policy.  There are multiple techniques to prevent this correlation; however, there are only two utilized within this DQN.
 
 
 #### Experience Replay
@@ -81,16 +79,6 @@ Each experience is stored in a replay buffer as the agent interacts with the env
 Also, experience replay improves learning through repetition. By doing multiple passes over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
 
 The implementation of the replay buffer can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L133) in the `agent.py` file of the source code.
-
-
-#### Dueling Agents
-Dueling networks utilize two streams: one that estimates the state value function `V(s)`, and another that estimates the advantage for each action `A(s,a)`. These two values are then combined to obtain the desired Q-values.  
-
-<img src="assets/dueling-networks-slide.png" width="60%" align="top-left" alt="" title="DDQN" />
-
-The reasoning behind this approach is that state values don't change much across actions, so it makes sense to estimate them directly. However, we still want to measure the impact that individual actions have in each state, hence the need for the advantage function.
-
-The dueling agents are implemented within the fully connected layers [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/model.py#L21) in the `model.py` file of the source code.
 
 
 ##### &nbsp;
