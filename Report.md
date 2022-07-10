@@ -61,17 +61,10 @@ The goal of the agent is to maximize reward in a given episode.  In general, an 
 
 There are various reinforcement learning techniques to obtain the optimal policy - this project utilizes Temporal Differencing, which updates the policy with each step within an episode, instead of waiting to learn until an episode is completed.  As the this is a stochastic environment and it cannot be known the exact return, a discount factor is applied to the expected return of each future step - the discount factor is denoted by the hyperparameter gamma `γ`.
 
-Next, we will describe each component of the algorithm in more detail.
-
-
 #### Epsilon Greedy Algorithm
-One challenge with the Q-function above is choosing which action to take while the agent is still learning the optimal policy. Should the agent choose an action based on the Q-values observed thus far? Or, should the agent try a new action in hopes of earning a higher reward? This is known as the **exploration vs. exploitation dilemma**.
+Reinforcement Learning is affected by the **exploration vs. exploitation dilemma**.  In a totally greedy control, the model would learn to simply select the action that has the maximum expected return `argmax a` without ever exploring other possibliities.  Particularly, when learning has just started, the optimal policy has not been determined and a suboptimal action will continue to be selected again and again.  However, to ensure that other actions are taken to explore other possible actions, an **𝛆-greedy algorithm** is utilized.  The agent "explores" by picking a random action with some probability epsilon `𝛜`; else, it takes the **greedy action** with a probability of (1-𝛜).  As the model learns or converges towards the optimal policy, `𝛜` is decayed - in effect, it takes the **greedy action** with a greater and greater probability.  
 
-To address this, I implemented an **𝛆-greedy algorithm**. This algorithm allows the agent to systematically manage the exploration vs. exploitation trade-off. The agent "explores" by picking a random action with some probability epsilon `𝛜`. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
-
-Furthermore, the value of epsilon is purposely decayed over time, so that the agent favors exploration during its initial interactions with the environment, but increasingly favors exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.
-
-You can find the 𝛆-greedy logic implemented as part of the `agent.act()` method [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L66) in `agent.py` of the source code.
+Furthermore, the value of epsilon is purposely decayed over time, so that the agent favors exploration during its initial interactions with the environment, but increasingly favors exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.  Within the Agent class, 𝛆-greedy logic implemented as part of the `agent.act()` method.
 
 
 #### Deep Q-Network (DQN)
