@@ -68,17 +68,8 @@ Reinforcement Learning is affected by the **exploration vs. exploitation dilemma
 #### Deep Q-Network (DQN)
 With Deep Q-Learning, a deep neural network,`NN`, is used to approximate the Q-function. DQN utilizes a NN to approximate a function,`F`.  The optimal policy is the function where `F(s,a,w) ≈ Q(s,a)`. The weights, `w`, become the parameter that the NN minimizes error.  A DQN is designed to produce a Q-value for every possible action in a single forward pass.   
 
-There is sometimes a very high correlation between actions and states; this may lead to an unstable and inneffective policy.  There are multiple techniques to prevent this correlation; however, there are only two utilized within this DQN.
-
-
 #### Experience Replay
-Experience replay allows the RL agent to learn from past experience.
-
-Each experience is stored in a replay buffer as the agent interacts with the environment. The replay buffer contains a collection of experience tuples with the state, action, reward, and next state `(s, a, r, s')`. The agent then samples from this buffer as part of the learning step. Experiences are sampled randomly, so that the data is uncorrelated. This prevents action values from oscillating or diverging catastrophically, since a naive Q-learning algorithm could otherwise become biased by correlations between sequential experience tuples.
-
-Also, experience replay improves learning through repetition. By doing multiple passes over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
-
-The implementation of the replay buffer can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L133) in the `agent.py` file of the source code.
+The first techIn a simple DQN, the interaction is learned from and then discarded, which is wasteful.  The idea of experience replay is to store a sampling of `(s,a, r, s')` in a buffer to relearn from them.  This also helps prevent an issue that occurs when a sequence of states and actions become highly correlated, which can cause a level of oscillation or divergence in a DQN.  
 
 
 ##### &nbsp;
