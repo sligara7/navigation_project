@@ -78,4 +78,9 @@ The first techIn a simple DQN, the interaction is learned from and then discarde
 There are many techniques in addition to experience replay designed to deal with a other issues that arize in training a DQN.  These include utilizing a Double DQN, Prioritized Experience Replay, Duelling DQN, multistep bootstrap targets, distributional DQN, and noisy DQN.  Additionally, all these techniques can be combined together - one example of this is the rainbow DQN, which can be found at https://github.com/Kaixhin/Rainbow.  If a cost to benefit ratio can be considered where the amount of work put into making these improvements, the benefit may be marginal.  A simple DQN utilizing experience replay seems to be sufficient for this task.  
 
 ##### &nbsp;
+
+## Note
+The content and code for this project submission were arrived at through course material and lectures available in Udacity's Reinforcement Learning Nanodegree.  
+
+##### &nbsp;
 ##### &nbsp;
